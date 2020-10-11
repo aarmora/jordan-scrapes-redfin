@@ -11,7 +11,7 @@ const exampleAddresses = [
 (async () => {
 
     for (let i = 0; i < exampleAddresses.length; i++) {
-        const path = await getUrl(exampleAddresses[i]);
+        const path = await getPath(exampleAddresses[i]);
 
         console.log('path', path);
 
@@ -21,11 +21,9 @@ const exampleAddresses = [
 
         await timeout(2000);
     }
-
-
 })();
 
-async function getUrl(address: string) {
+async function getPath(address: string) {
     // Location and v are required query parameters
     const url = `https://www.redfin.com/stingray/do/location-autocomplete?location=${address}&v=2`;
 
@@ -50,9 +48,7 @@ async function getPrice(path: string) {
     }
 
     return price;
-
 }
-
 
 function timeout(ms: number) {
 	return new Promise(res => setTimeout(res, ms));
